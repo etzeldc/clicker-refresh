@@ -5,7 +5,7 @@
 var scoreOutput = document.querySelector('#scoreOutput');
 var primeOutput = document.querySelector('#primeOutput');
 var messageOutput = document.querySelector('#messageOutput');
-var score = 0;
+var score = 67;
 var primeCount = 0;
 var random, rand1, rand2, rand3, rand4, rand5, randTotal;
 
@@ -18,6 +18,9 @@ document.getElementById('clicker').addEventListener('click', function() {
     messageOutput.textContent = '...';
     score++;
     primeBonus();
+    stoner();
+    eightySixer();
+    devil();
     scoreOutput.textContent = score;
 });
 
@@ -97,7 +100,7 @@ function isPrime(x) {
 
 // PRIME BONUS
 function primeBonus() {
-    if (isPrime(score) === true) {
+    if (score > 0 && isPrime(score) === true) {
         primeCount++;
         primeOutput.textContent = primeCount;
         if (primeCount === 20) {
@@ -105,5 +108,29 @@ function primeBonus() {
             primeCount = 0;
             primeOutput.textContent = primeCount;
         }
+    }
+}
+
+// DEVIL 
+function devil() {
+    if (score === 666) {
+        score = 0;
+        messageOutput.textContent = 'The Devil took your points!';
+    }
+}
+
+// STONER 
+function stoner() {
+    if (score === 420) {
+        score = score + 1000;
+        messageOutput.textContent = 'You found the Stoner\'s stash!';
+    }
+}
+
+// 86er 
+function eightySixer() {
+    if (score !== 0 && score % 86 === 0) {
+        score = score - 100;
+        messageOutput.textContent = 'You got eighty sixed!';
     }
 }
