@@ -7,7 +7,7 @@ var primeOutput = document.querySelector('#primeOutput');
 var messageOutput = document.querySelector('#messageOutput');
 var score = 0;
 var primeCount = 0;
-var random;
+var random, rand1, rand2, rand3, rand4, rand5, randTotal;
 
 ///////////////////////
 ////    BUTTONS    ////
@@ -24,6 +24,11 @@ document.getElementById('clicker').addEventListener('click', function() {
 // RANDOM BUY BUTTON
 document.getElementById('random').addEventListener('click', function() {
     buyRandom();
+});
+
+// FIVE RANDOM DRAW BUTTON
+document.getElementById('fiveRandom').addEventListener('click', function() {
+    buyFiveRandom(); 
 });
 
 /////////////////////////
@@ -47,6 +52,29 @@ function buyRandom() {
         randomNumber();
         messageOutput.textContent = 'You bought ' + random + ' points.';
         score = score + random;
+        scoreOutput.textContent = score;
+    }
+}
+
+// FIVE RANDOM DRAWS TOTAL
+function sumFiveRandom() {
+    randTotal = rand1 + rand2 + rand3 + rand4 + rand5;
+    return randTotal;
+}
+
+// FIVE RANDOM DRAWS PURCHASE
+function buyFiveRandom() {
+    if (score < 200) {
+        messageOutput.textContent = 'Your score isn\'t high enough';
+    } else {
+        score = score - 200;
+        rand1 = randomNumber();
+        rand2 = randomNumber();
+        rand3 = randomNumber();
+        rand4 = randomNumber();
+        rand5 = randomNumber();
+        score = score + sumFiveRandom();
+        messageOutput.textContent = 'You bought ' + rand1 + ", " + rand2 + ", " + rand3 + ", " + rand4 + ", and " + rand5 + ', for a total of ' + randTotal + ' points.';
         scoreOutput.textContent = score;
     }
 }
