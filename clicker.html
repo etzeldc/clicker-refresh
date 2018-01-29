@@ -9,17 +9,23 @@
 </head>
 <body>
     <div id="main">
-        <div>MESSAGE: <span id="messageOutput"></span></div>
+        <div id="messageOutput">...</div>
         <div>SCORE: <span id="scoreOutput">0</span></div>
         <div>PRIME COUNT: <span id="primeOutput">0</span></div>
-        <li>Every ninth prime multiplies score by 1.7</li>
+        <li>Every twentieth prime doubles your score</li>
+        <li>Buy a random number of points between 1 and 100 for 50 points</li>
         <!-- <div>SCORE OUTPUT: <span id="output">0</span></div>
         <div>SCORE OUTPUT: <span id="output">0</span></div> -->
     </div>
-    <div id="buttons">
-        <div id="clicker">CLICKER</div>
-        <div id="random">buy a random number of points</div>
-        <div id="super">buy a SUPER CLICKER</div>
+    <div id="mainButton">
+        <button id="clicker"><b>CLICKER</b></button>
+        <!-- text will update with clicker purchases -->
+    </div>
+    <div id="buyRandom">
+            <button id="random">Buy <b>1 - 100 points</b> (for 50 points)</button>
+    </div>    
+    <div id="buySuper">
+        <button id="super">Buy a <b>SUPER CLICKER</b> (for  points)</button>
     </div>
 
     <script src="./clicker.js"></script>
