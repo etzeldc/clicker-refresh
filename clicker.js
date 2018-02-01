@@ -5,7 +5,7 @@
 var scoreOutput = document.querySelector('#scoreOutput');
 var primeOutput = document.querySelector('#primeOutput');
 var messageOutput = document.querySelector('#messageOutput');
-var score = 24500;
+var score = 0;
 var primeCount = 0;
 var random, rand1, rand2, rand3, rand4, rand5, randTotal;
 
@@ -35,10 +35,21 @@ document.getElementById('superClicker').addEventListener('click', function() {
     scoreOutput.textContent = score;
 });
 
+// MEGA CLICKER BUTTON
+document.getElementById('megaClicker').addEventListener('click', function() {
+    messageOutput.textContent = '...';
+    score = score + Math.floor(Math.random() * 5) + 5;
+    primeBonus();
+    stoner();
+    eightySixer();
+    devil();
+    scoreOutput.textContent = score;
+});
+
 // ULTRA CLICKER BUTTON
 document.getElementById('ultraClicker').addEventListener('click', function() {
     messageOutput.textContent = '...';
-    score = score + Math.floor(Math.random() * 3) + 3;
+    score = score + Math.floor(Math.random() * 10) + 10;
     primeBonus();
     stoner();
     eightySixer();
@@ -61,10 +72,15 @@ document.getElementById('super').addEventListener('click', function() {
     buySuper();
 });
 
+// MEGA CLICKER BUY BUTTON
+document.getElementById('mega').addEventListener('click', function() {
+    buyMega();
+});
+
 // ULTRA CLICKER BUY BUTTON
 document.getElementById('ultra').addEventListener('click', function() {
     buyUltra();
-})
+});
 
 /////////////////////////
 ////    FUNCTIONS    ////
@@ -124,19 +140,35 @@ function buySuper() {
         document.getElementById('clicker').style.display="none";
         document.getElementById('super').style.display="none"
         document.getElementById('superClicker').style.display="inline";
-        document.getElementById('ultra').style.display="inline";
+        document.getElementById('mega').style.display="inline";
         messageOutput.textContent = "You just bought a Super Clicker!";
         scoreOutput.textContent = score;
     }
 }
 
-// ULTRA CLICKER PURCHASE
-function buyUltra() {
+// MEGA CLICKER PURCHASE
+function buyMega() {
     if (score < 25000) {
         messageOutput.textContent = 'Your score isn\'t high enough';
     } else {
         score = score - 25000;
         document.getElementById('superClicker').style.display="none";
+        document.getElementById('mega').style.display='none';
+        document.getElementById('megaClicker').style.display='inline';
+        document.getElementById('ultra').style.display='inline';
+        messageOutput.textContent = "You just bought a Mega Clicker";
+        scoreOutput.textContent = score;
+    }
+}
+//////////
+// ULTRA CLICKER PURHCHASE
+function buyUltra() {
+    if ( score < 100000) {
+        messageOutput.textContent = 'Your score isn\'t high enough';
+    } else {
+        score = score - 100000;
+        document.getElementById('megaClicker').style.display='none';
+        document.getElementById('ultra').style.display='none';
         document.getElementById('ultraClicker').style.display='inline';
         messageOutput.textContent = "You just bought an Ultra Clicker";
         scoreOutput.textContent = score;
