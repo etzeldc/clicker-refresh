@@ -82,6 +82,21 @@ document.getElementById('ultra').addEventListener('click', function() {
     buyUltra();
 });
 
+// AUTO CLICKER ONE BUY BUTTON
+document.getElementById('autoOne').addEventListener('click', function() {
+    buyAutoOne();
+});
+
+// AUTO CLICKER TWO BUY BUTTON
+document.getElementById('autoTwo').addEventListener('click', function() {
+    buyAutoTwo();
+});
+
+// AUTO CLICKER THREE BUY BUTTON
+document.getElementById('autoThree').addEventListener('click', function() {
+    buyAutoThree();
+});
+
 /////////////////////////
 ////    FUNCTIONS    ////
 /////////////////////////
@@ -115,10 +130,10 @@ function sumFiveRandom() {
 
 // FIVE RANDOM DRAWS PURCHASE
 function buyFiveRandom() {
-    if (score < 200) {
+    if (score < 250) {
         messageOutput.textContent = 'Your score isn\'t high enough';
     } else {
-        score = score - 200;
+        score = score - 250;
         rand1 = randomNumber();
         rand2 = randomNumber();
         rand3 = randomNumber();
@@ -141,6 +156,7 @@ function buySuper() {
         document.getElementById('super').style.display="none"
         document.getElementById('superClicker').style.display="inline";
         document.getElementById('mega').style.display="inline";
+        document.getElementById('autoOne').style.display = 'inline';
         messageOutput.textContent = "You just bought a Super Clicker!";
         scoreOutput.textContent = score;
     }
@@ -160,18 +176,77 @@ function buyMega() {
         scoreOutput.textContent = score;
     }
 }
-//////////
+
 // ULTRA CLICKER PURHCHASE
 function buyUltra() {
-    if ( score < 100000) {
+    if (score < 100000) {
         messageOutput.textContent = 'Your score isn\'t high enough';
     } else {
         score = score - 100000;
-        document.getElementById('megaClicker').style.display='none';
-        document.getElementById('ultra').style.display='none';
-        document.getElementById('ultraClicker').style.display='inline';
+        document.getElementById('megaClicker').style.display = 'none';
+        document.getElementById('ultra').style.display = 'none';
+        document.getElementById('ultraClicker').style.display = 'inline';
         messageOutput.textContent = "You just bought an Ultra Clicker";
         scoreOutput.textContent = score;
+    }
+}
+
+// AUTO CLICKER ONE PURCHASE
+function buyAutoOne() {
+    if (score < 10000) {
+        messageOutput.textContent = 'Your score isn\'t high enough';
+    } else {
+        score = score - 10000;
+        document.getElementById('autoOne').style.display = 'none';
+        document.getElementById('autoTwo').style.display = 'inline';
+        setInterval(function() {
+            score++;
+            primeBonus();
+            stoner();
+            eightySixer();
+            devil();
+            scoreOutput.textContent = score;
+        }, 1000);
+        messageOutput.textContent = "You just bought an Auto Clicker";
+    }
+}
+
+// AUTO CLICKER TWO PURCHASE
+function buyAutoTwo() {
+    if (score < 20000) {
+        messageOutput.textContent = 'Your score isn\'t high enough';
+    } else {
+        score = score - 20000;
+        document.getElementById('autoTwo').style.display = 'none';
+        document.getElementById('autoThree').style.display = 'inline';
+        setInterval(function() {
+            score = score + 2;
+            primeBonus();
+            stoner();
+            eightySixer();
+            devil();
+            scoreOutput.textContent = score;
+        }, 1000);
+        messageOutput.textContent = "You just bought a Double Auto Clicker";
+    }
+}
+
+// AUTO CLICKER THREE PURCHASE
+function buyAutoThree() {
+    if (score < 50000) {
+        messageOutput.textContent = 'Your score isn\'t high enough';
+    } else {
+        score = score - 50000;
+        document.getElementById('autoThree').style.display = 'none';
+        setInterval(function() {
+            score = score + 5;
+            primeBonus();
+            stoner();
+            eightySixer();
+            devil();
+            scoreOutput.textContent = score;
+        }, 1000);
+        messageOutput.textContent = "You just bought a Mega Auto Clicker";
     }
 }
 
