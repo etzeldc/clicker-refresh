@@ -2,7 +2,7 @@
 ////    GLOBALS    ////
 ///////////////////////
 
-var scoreOutput = document.querySelector('#scoreOutput');
+var scoreOutput =document.querySelector('#scoreOutput');
 var primeOutput = document.querySelector('#primeOutput');
 var messageOutput = document.querySelector('#messageOutput');
 var score = 0;
@@ -268,7 +268,7 @@ function isPrime(x) {
 
 // PRIME BONUS
 function primeBonus() {
-    if (score > 0 && isPrime(score) === true) {
+    if (score > 1 && isPrime(score) === true) {
         primeCount++;
         primeOutput.textContent = primeCount;
         if (primeCount === 20) {
@@ -281,7 +281,7 @@ function primeBonus() {
 
 // DEVIL 
 function devil() {
-    if (score === 666) {
+    if (score !== 0 && score % 666 === 0) {
         score = 0;
         messageOutput.textContent = 'The Devil took your points!';
     }
@@ -289,8 +289,9 @@ function devil() {
 
 // STONER 
 function stoner() {
-    if (score === 420) {
+    if (score !== 0 && score % 420 === 0) {
         score = score + 1000;
+
         messageOutput.textContent = 'You found the Stoner\'s stash!';
     }
 }
